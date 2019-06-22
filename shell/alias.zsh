@@ -12,3 +12,6 @@ alias dil='docker image ls'
 alias dia='docker image ls -a'
 alias dn='docker network'
 alias dnl='docker network ls'
+alias sls='s3cmd ls'
+alias sg='s3cmd get'
+
