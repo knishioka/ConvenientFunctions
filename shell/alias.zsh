@@ -14,4 +14,5 @@ alias dn='docker network'
 alias dnl='docker network ls'
 alias sls='s3cmd ls'
 alias sg='s3cmd get'
-
+alias ta='tmux attach'
+alias tl='tmux ls'
