@@ -23,9 +23,12 @@ function sless() {
     s3cmd get --no-progress $1 - | less
 }
 
+# S3からgzファイルを取得してzcatで開く
+function szcat (){
+    s3cmd get --no-progress $1 - | zcat
+}
 
 # S3からgzファイルを取得してlessで開く
 function szless (){
     s3cmd get --no-progress $1 - | zcat | less
 }
-
