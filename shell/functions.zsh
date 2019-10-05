@@ -24,11 +24,16 @@ function sless() {
 }
 
 # S3からgzファイルを取得してzcatで開く
-function szcat (){
+function szcat () {
     s3cmd get --no-progress $1 - | zcat
 }
 
 # S3からgzファイルを取得してlessで開く
-function szless (){
+function szless () {
     s3cmd get --no-progress $1 - | zcat | less
+}
+
+# aws lambdaのソースをダウンロード
+function get-lambda () {
+    curl -o $1.zip $(aws lambda get-function --function-name $1 | jq -r '.Code.Location')
 }
