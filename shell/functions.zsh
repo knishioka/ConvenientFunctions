@@ -39,7 +39,12 @@ function get-lambda () {
 }
 
 # 落ちたjobの情報を取得
-function get-failed-job (){
+function get-failed-job () {
     aws batch list-jobs --job-queue $1 --job-status FAILED |
         jq '.jobSummaryList[] | .createdAt |= (./1000 | todate) | .startedAt |= (./1000 | todate) | .stoppedAt |= (./1000 | todate)'
+}
+
+# job queue一覧取得
+function get-job-queues () {
+    aws batch describe-job-queues | jq '.jobQueues[] | {jobQueueName, jobQueueArn}'
 }
