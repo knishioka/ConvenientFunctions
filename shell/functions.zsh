@@ -37,3 +37,9 @@ function szless () {
 function get-lambda () {
     curl -o $1.zip $(aws lambda get-function --function-name $1 | jq -r '.Code.Location')
 }
+
+# 落ちたjobの情報を取得
+function get-failed-job (){
+    aws batch list-jobs --job-queue $1 --job-status FAILED |
+        jq '.jobSummaryList[] | .createdAt |= (./1000 | todate) | .startedAt |= (./1000 | todate) | .stoppedAt |= (./1000 | todate)'
+}
