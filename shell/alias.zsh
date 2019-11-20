@@ -11,6 +11,7 @@ alias dn='docker network'
 alias dnl='docker network ls'
 alias dv='docker volume'
 alias dvl='docker volume ls'
+alias get-job-queues="aws batch describe-job-queues | jq '.jobQueues[] | {jobQueueName, jobQueueArn}'"
 alias gfrh='git fetch && git reset origin/`git rev-parse --abbrev-ref HEAD` --hard'
 alias k='kubectl'
 alias sls='s3cmd ls'
