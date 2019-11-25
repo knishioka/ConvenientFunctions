@@ -1,0 +1,6 @@
+alias k='kubectl'
+alias kg='kubectl get'
+alias kgpo='kubectl get pod'
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+alias klog='kubectl logs'
