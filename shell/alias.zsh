@@ -4,7 +4,6 @@ alias sls='s3cmd ls'
 alias ta='tmux attach'
 alias tl='tmux ls'
 alias today='date "+%Y%m%d"'
-alias gfrh='git fetch && git reset origin/`git rev-parse --abbrev-ref HEAD` --hard'
 alias ec2desc="aws ec2 describe-instances | jq '.Reservations[].Instances[] | .InstanceId + \" \" + .PrivateIpAddress + \" \" + .Tags[].Value + \" \" + .State[\"Name\"]'"
 alias ec2st='aws ec2 describe-instance-status --instance-ids'
 alias ec2start='aws ec2 start-instances --instance-ids'
