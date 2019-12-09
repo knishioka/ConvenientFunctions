@@ -42,6 +42,7 @@ function get-lambda () {
 function get-failed-job () {
     aws batch list-jobs --job-queue $1 --job-status FAILED |
         jq '.jobSummaryList[] | .createdAt |= (./1000 | todate) | .startedAt |= (./1000 | todate) | .stoppedAt |= (./1000 | todate)'
+}
 
 # Nameタグを利用してec2のinstance idを取得
 function ec2iid () {
