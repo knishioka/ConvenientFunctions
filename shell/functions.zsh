@@ -48,3 +48,8 @@ function get-failed-job () {
 function ec2iid () {
     aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" | jq -r '.Reservations[].Instances[] | .InstanceId'
 }
+
+# ecrにあるimageをtagをつけて表示
+func desc-ecr-images () {
+    aws ecr describe-images --repository-name $1 | jq -r '.imageDetails[] | "\(.imageDigest)\t\(.imageTags)"'
+}
