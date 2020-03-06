@@ -52,6 +52,6 @@ function ec2iid () {
 }
 
 # ecrにあるimageをtagをつけて表示
-function desc-ecr-images () {
-    aws ecr describe-images --repository-name "$1" | jq -r '.imageDetails[] | "\(.imageDigest)\t\(.imageTags)"'
+function describe-ecr-images () {
+    aws ecr describe-images --repository-name "$1" | jq -r '.imageDetails[] | "\(.repositoryName):\(.imageTags[])"' | sort
 }
