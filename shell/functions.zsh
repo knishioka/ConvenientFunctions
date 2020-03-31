@@ -60,3 +60,8 @@ function describe-ecr-images () {
 function get-job-status() {
     aws batch describe-jobs --jobs "$1" | jq -r '.jobs[] | "\(.status)\t\(.attempts[].container.logStreamName)"'
 }
+
+# AWS Glue
+function get-glue-job-runs() {
+    aws glue get-job-runs --job-name "$1" | jq -r '.JobRuns[] | "\(.Id)\t\(.JobRunState)\t\(.StartedOn | todate)\t\(.CompletedOn | todate)"'
+}
