@@ -55,3 +55,8 @@ function ec2iid () {
 function describe-ecr-images () {
     aws ecr describe-images --repository-name "$1" | jq -r '.imageDetails[] | "\(.repositoryName):\(.imageTags[])"' | sort
 }
+
+# AWS Batchのjobのステータスとログの情報を取得
+function get-job-status() {
+    aws batch describe-jobs --jobs "$1" | jq -r '.jobs[] | "\(.status)\t\(.attempts[].container.logStreamName)"'
+}
