@@ -63,5 +63,5 @@ function get-job-status() {
 
 # AWS Glue
 function get-glue-job-runs() {
-    aws glue get-job-runs --job-name "$1" | jq -r '.JobRuns[] | "\(.Id)\t\(.JobRunState)\t\(.StartedOn | todate)\t\(.CompletedOn | todate)"'
+    aws glue get-job-runs --job-name "$1" | jq -r '.JobRuns[] | .StartedOn = (.StartedOn | todate) | if .CompletedOn then .CompletedOn = (.CompletedOn | todate) else . end | "\(.Id)\t\(.JobRunState)\t\(.StartedOn)\t\(.CompletedOn)"'
 }
