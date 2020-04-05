@@ -57,7 +57,7 @@ function describe-ecr-images () {
 }
 
 # AWS Batchのjobのステータスとログの情報を取得
-function get-job-status() {
+function get-batch-jobs() {
     aws batch describe-jobs --jobs "$1" | jq -r '.jobs[] | "\(.status)\t\(.attempts[].container.logStreamName)"'
 }
 
