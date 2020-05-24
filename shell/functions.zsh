@@ -65,3 +65,11 @@ function get-batch-jobs() {
 function get-glue-job-runs() {
     aws glue get-job-runs --job-name "$1" | jq -r '.JobRuns[] | .StartedOn = (.StartedOn | todate) | if .CompletedOn then .CompletedOn = (.CompletedOn | todate) else . end | "\(.Id)\t\(.JobRunState)\t\(.StartedOn)\t\(.CompletedOn)"'
 }
+
+# Get repository name
+function repo-name {
+  local repo_path
+  if repo_path="$(git rev-parse --show-toplevel 2>/dev/null)" && [[ -n "$repo_path" ]]; then
+    echo ${repo_path:t}
+  fi
+}
